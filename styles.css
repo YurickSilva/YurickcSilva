@@ -774,6 +774,99 @@ li {
     from { height: 0; }
 }
 
+/* ==========================================================================
+   CARD DE PROJETO ESPECÍFICO (DATA ENGINE / PORTFÓLIO)
+   ========================================================================== */
+
+/* Garante que os blocos de fluxo de automação herdem o efeito de vidro corretamente */
+.project-visual .flow-container.glass-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Acende a borda do fluxo de automação com o gradiente roxo/ciano do seu tema no hover */
+.project-visual .flow-container.glass-card:hover {
+    border-color: rgba(139, 92, 246, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Espaçamento extra para as tags de tecnologia não colarem no fluxo de recursos */
+.project-info .role-tech-tags {
+    margin-top: 20px;
+}
+
+/* Alinhamento do cabeçalho do projeto */
+.project-header {
+    margin-bottom: 18px;
+}
+
+/* Categoria discreta acima do título */
+.project-category {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-accent-violet); /* Destaque em violeta para engenharia de dados */
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* Título do Projeto */
+.project-title {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+/* Descrição detalhada do projeto */
+.project-description {
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* O filete brilhante na lateral esquerda do card */
+.project-card .card-edge-glow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+/* Cor violeta para a borda esquerda do motor de mock */
+.project-card .card-edge-glow.violet {
+    background: var(--color-accent-violet);
+}
+
+/* Interação de Hover: Acende a borda com o gradiente principal do seu tema */
+.project-card:hover .card-edge-glow {
+    background: var(--color-accent-gradient);
+}
+
+/* Ajuste fino para telas menores (Responsividade) */
+@media (max-width: 576px) {
+    .project-card {
+        padding: 24px;
+    }
+    
+    .project-title {
+        font-size: 18px;
+    }
+    
+    .project-description {
+        font-size: 13.5px;
+    }
+}
+
 /* Visual Flow: TermoTecnico Automação */
 .flow-container {
     padding: 30px;

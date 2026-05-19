@@ -146,24 +146,68 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ==========================================================================
-       4. ANIMAÇÕES REVEAL ON SCROLL (INTERSECTION OBSERVER)
+/* ==========================================================================
+       4. ANIMAÇÕES REVEAL ON SCROLL (DIREÇÃO COERENTE COM O SCROLL)
        ========================================================================== */
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-stagger');
+    let lastScrollY = window.scrollY;
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    const revealObserver = new IntersectionObserver((entries) => {
+        // Detecta a direção atual do scroll do usuário
+        const isScrollingDown = window.scrollY > lastScrollY;
+
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Para de observar após animar
+                // Se está descendo, aplica comportamento de descida. Se subindo, de subida.
+                if (isScrollingDown) {
+                    entry.target.classList.add('active');
+                    entry.target.classList.remove('scroll-up-state');
+                } else {
+                    entry.target.classList.add('active');
+                    entry.target.classList.add('scroll-up-state');
+                }
+            } else {
+                // Quando sai da tela, remove o active para resetar
+                entry.target.classList.remove('active');
             }
         });
+
+        // Atualiza a última posição do scroll
+        lastScrollY = window.scrollY;
     }, {
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        rootMargin: "0px 0px -60px 0px"
     });
 
     revealElements.forEach(element => {
         revealObserver.observe(element);
     });
-});
+
+/*  ==========================================================================
+       5. BOTÃO VOLTAR AO TOPO
+    ========================================================================== */
+    const backToTopButton = document.getElementById('backToTop');
+
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            // Calcula a altura total da página menos a altura visível da janela
+            const totalScrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            // Posição atual do scroll do usuário
+            const currentScrollPosition = window.scrollY;
+
+            // Ativa o botão quando o usuário chega nos últimos 200px do fim da página
+            if ((totalScrollableHeight - currentScrollPosition) <= 200) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Evento de clique para subir ao topo de forma suave
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }});

@@ -933,57 +933,397 @@ li {
 }
 
 /* ==========================================================================
-   ANIMAÇÃO DE REVELAÇÃO NO SCROLL (SCROLL REVEAL)
+   ANIMAÇÃO DE REVELAÇÃO NO SCROLL (COERENTE COM A DIREÇÃO)
    ========================================================================== */
 
+/* --- REVEAL PADRÃO (EIXO Y) --- */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(40px); /* Padrão: vem de baixo quando você desce */
     transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modificador caso o usuário esteja subindo a página */
+.reveal.scroll-up-state {
+    transform: translateY(-40px); /* Inverte: vem de cima quando você sobe */
 }
 
 .reveal.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) !important; /* Força o ponto zero final */
 }
 
+/* --- REVEAL LEFT (EIXO X) --- */
 .reveal-left {
     opacity: 0;
     transform: translateX(-40px);
     transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-left.active {
-    opacity: 1;
-    transform: translateX(0);
+/* Na subida, mantemos o alinhamento horizontal, mas suavizamos a entrada */
+.reveal-left.scroll-up-state {
+    transform: translateX(-40px) translateY(-20px); 
 }
 
+.reveal-left.active {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+}
+
+/* --- REVEAL RIGHT (EIXO X) --- */
 .reveal-right {
     opacity: 0;
     transform: translateX(40px);
     transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-right.active {
-    opacity: 1;
-    transform: translateX(0);
+.reveal-right.scroll-up-state {
+    transform: translateX(40px) translateY(-20px);
 }
 
-/* Stagger transition delay for groups */
+.reveal-right.active {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+}
+
+/* --- REVEAL STAGGER (GRUPOS/CARDS) --- */
 .reveal-stagger > * {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-stagger.active > * {
-    opacity: 1;
-    transform: translateY(0);
+/* Inverte a entrada dos filhos na subida */
+.reveal-stagger.scroll-up-state > * {
+    transform: translateY(-20px);
 }
 
+.reveal-stagger.active > * {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+/* Delays do efeito cascata na ativação */
 .reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
 .reveal-stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
 .reveal-stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
 .reveal-stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
 .reveal-stagger.active > *:nth-child(5) { transition-delay: 0.5s; }
 
+
+/* ==========================================================================
+   NOVO DESIGN DE EXPERIÊNCIAS - TIMELINE TÉCNICA
+   ========================================================================== */
+
+.modern-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Linha Conectora Central */
+.timeline-connector-line {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+                var(--color-accent-cyan) 0%, 
+                var(--color-accent-violet) 50%, 
+                rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0.6;
+    z-index: 1;
+}
+
+/* Bloco base da linha do tempo */
+.timeline-block {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 80px;
+    z-index: 2;
+}
+
+/* Os Distintivos (Badges) da Linha do Tempo */
+.timeline-badge {
+    position: absolute;
+    left: 15px;
+    top: 25px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-bg-dark);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    z-index: 3;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Badge do cargo atual destacado em Ciano */
+.timeline-badge.active-badge {
+    border-color: var(--color-accent-cyan);
+    color: var(--color-accent-cyan);
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+/* Estilo do Card customizado */
+.timeline-card {
+    position: relative;
+    width: 100%;
+    padding: 32px;
+    overflow: hidden;
+}
+
+/* Card mais antigo (opacidade reduzida para criar hierarquia temporal) */
+.timeline-card.legacy-card {
+    background-color: rgba(13, 19, 36, 0.35);
+    border-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Efeito de filete brilhante na borda esquerda do card */
+.card-edge-glow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+.card-edge-glow.cyan { background: var(--color-accent-cyan); }
+.card-edge-glow.violet { background: var(--color-accent-violet); }
+
+/* Detalhes de texto internos do card */
+.timeline-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.timeline-card-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-accent-cyan);
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+}
+
+.timeline-card-company {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+}
+
+.text-gradient {
+    background: var(--color-accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.timeline-card-role {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-text-primary);
+}
+
+.timeline-card-desc {
+    font-size: 14.5px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Pequenas Tags de Habilidade por Cargo */
+.role-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.role-tech-tags span {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(248, 250, 252, 0.8);
+}
+
+/* Indicador de Transição Interna (Voyzer) */
+.timeline-block.internal-transition {
+    padding-left: 80px;
+    margin: -10px 0 -10px 0;
+}
+
+.transition-node {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    background-color: rgba(34, 211, 238, 0.04);
+    border: 1px dashed rgba(34, 211, 238, 0.2);
+    border-radius: 20px;
+    color: var(--color-accent-cyan);
+    font-size: 12px;
+    font-family: var(--font-heading);
+    font-weight: 500;
+}
+
+.transition-node i {
+    animation: pulseArrow 2s infinite ease-in-out;
+}
+
+@keyframes pulseArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Interações de Hover e Foco */
+.timeline-card:hover .card-edge-glow {
+    background: var(--color-accent-gradient);
+}
+
+.timeline-block:hover .timeline-badge {
+    border-color: var(--color-accent-cyan);
+    color: var(--color-accent-cyan);
+    transform: scale(1.15);
+}
+
+/* RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS */
+@media (max-width: 576px) {
+    .timeline-connector-line {
+        left: 18px;
+    }
+    .timeline-block {
+        padding-left: 45px;
+    }
+    .timeline-block.internal-transition {
+        padding-left: 45px;
+    }
+    .timeline-badge {
+        left: 5px;
+        top: 22px;
+    }
+    .timeline-card {
+        padding: 24px;
+    }
+    .timeline-card-header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .timeline-card-role {
+        font-size: 18px;
+    }
+}
+
+
+/* ==========================================================================
+   BOTÃO VOLTAR AO TOPO (COM TEXTO - INTEGRADO AO DESIGN SYSTEM)
+   ========================================================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 18px; /* Transforma o círculo em formato de pílula */
+    border-radius: 30px; /* Mantém as bordas perfeitamente arredondadas */
+    
+    /* Cores e Glassmorphism usando suas variáveis */
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--color-text-primary);
+    
+    /* Alinhamento do Texto + Ícone */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o texto e a seta */
+    z-index: 80;
+    
+    /* Transição idêntica à do seu padrão .glass-card */
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease, 
+                background-color 0.3s ease,
+                box-shadow 0.3s ease,
+                color 0.3s ease;
+                
+    /* Estado inicial (Oculto) */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+/* Estilização do Texto do Botão */
+.back-to-top-text {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Estilização do Ícone */
+.back-to-top i {
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+/* Estado Ativo (Injetado via JavaScript) */
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+/* Efeito de Hover Alinhado com sua Identidade Ciano */
+.back-to-top:hover {
+    border-color: var(--color-accent-cyan);
+    background-color: rgba(34, 211, 238, 0.08); /* Brilho suave em Ciano */
+    color: var(--color-accent-cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Micro-interação: a seta dá um leve pulo para cima no hover */
+.back-to-top:hover i {
+    transform: translateY(-2px);
+}
+
+/* Ajuste Responsivo para Mobile (Oculta o texto para não obstruir a tela do celular) */
+@media (max-width: 576px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        padding: 0;
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+    }
+    .back-to-top-text {
+        display: none; /* Deixa apenas o ícone visível em telas pequenas */
+    }
+    .back-to-top i {
+        font-size: 24px;
+    }
+}

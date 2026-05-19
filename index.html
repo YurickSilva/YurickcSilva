@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yurick Carrard | Portfólio de Dados & Automação</title>
+    <meta name="description" content="Portfólio de Yurick Carrard - Desenvolvedor de Dados e Automação focado em simplificar e otimizar fluxos de trabalho controladoria e BI.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;850&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+    <!-- Header / Navigation Toggle -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo hover-target" id="logoLink">
+                Yurick <span class="logo-emoji" id="logoEmoji">👋</span>
+            </a>
+            <button class="menu-toggle hover-target" id="menuToggle" aria-label="Abrir Menu">
+                <span class="menu-text">Menu</span>
+                <span class="menu-close-text" style="display: none;">Fechar</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Full-Screen Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-wrapper">
+            <nav class="menu-nav">
+                <div class="menu-item-wrapper">
+                    <span class="menu-num">01.</span>
+                    <a href="#inicio" class="menu-link hover-target navlink">Início</a>
+                </div>
+                <div class="menu-item-wrapper">
+                    <span class="menu-num">02.</span>
+                    <a href="#sobre" class="menu-link hover-target navlink">Sobre</a>
+                </div>
+                <div class="menu-item-wrapper">
+                    <span class="menu-num">03.</span>
+                    <a href="#habilidades" class="menu-link hover-target navlink">Habilidades</a>
+                </div>
+                <div class="menu-item-wrapper">
+                    <span class="menu-num">04.</span>
+                    <a href="#projetos" class="menu-link hover-target navlink">Projetos</a>
+                </div>
+                <div class="menu-item-wrapper">
+                    <span class="menu-num">05.</span>
+                    <a href="#contato" class="menu-link hover-target navlink">Contato</a>
+                </div>
+            </nav>
+            <div class="menu-footer">
+                <div class="menu-footer-item">
+                    <span class="menu-footer-label">E-mail</span>
+                    <a href="mailto:yurick_carrard@grupovoyzer.com.br" class="menu-footer-link hover-target">yurick_carrard@grupovoyzer.com.br</a>
+                </div>
+                <div class="menu-footer-item">
+                    <span class="menu-footer-label">Social</span>
+                    <div class="menu-social-links">
+                        <a href="https://www.linkedin.com/in/yurick-carrard-da-silva/" target="_blank" class="menu-footer-link hover-target">LinkedIn</a>
+                        <a href="https://github.com/YurickcSilva" target="_blank" class="menu-footer-link hover-target">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="main-content" id="mainContent">
+
+        <!-- HERO SECTION -->
+        <section id="inicio" class="section hero-section">
+            <div class="container hero-container reveal">
+                <div class="hero-tag hover-target">Controladoria & Automação</div>
+                <h1 class="hero-title">
+                    Transformando <span class="gradient-text">processos manuais</span> em inteligência digital.
+                </h1>
+                <p class="hero-subtitle">
+                    Olá! Eu sou o Yurick. Atuo na área de Controladoria desenvolvendo ferramentas de Business Intelligence (BI), ERPs/CRMs personalizados e automações eficientes que reduzem o trabalho operacional e aumentam a precisão dos dados.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projetos" class="btn btn-primary hover-target">Ver Projetos <i class="bi bi-arrow-right"></i></a>
+                    <a href="#contato" class="btn btn-secondary hover-target">Entrar em contato</a>
+                </div>
+            </div>
+            <div class="hero-bg-glow"></div>
+        </section>
+
+        <!-- SOBRE SECTION -->
+        <section id="sobre" class="section sobre-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-num">02 / SOBRE MIM</span>
+                    <h2 class="section-title">Onde a lógica encontra a eficiência.</h2>
+                </div>
+                <div class="sobre-grid">
+                    <div class="sobre-content reveal-left">
+                        <p class="sobre-text">
+                            Meu foco profissional está em **eliminar a fricção de tarefas repetitivas**. Desenvolvo soluções que consolidam informações complexas em visualizações claras e automatizo a ponte entre diferentes plataformas (como bancos de dados locais, APIs e serviços na nuvem).
+                        </p>
+                        <p class="sobre-text">
+                            Acredito que o verdadeiro papel da tecnologia em controladoria é permitir que profissionais tomem decisões estratégicas em vez de gastarem horas montando planilhas manuais. Por isso, me aprofundo na criação de fluxos de dados limpos, consistentes e integrados.
+                        </p>
+                    </div>
+                    <div class="sobre-stats reveal-right">
+                        <div class="stat-card glass-card hover-target">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Automação de Relatórios Manual</span>
+                        </div>
+                        <div class="stat-card glass-card hover-target">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Vazamento de Credenciais</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HABILIDADES SECTION -->
+        <section id="habilidades" class="section habilidades-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-num">03 / HABILIDADES</span>
+                    <h2 class="section-title">Minha Caixa de Ferramentas.</h2>
+                </div>
+                <div class="skills-grid reveal-stagger">
+                    <!-- Tech Group 1 -->
+                    <div class="skill-category glass-card">
+                        <div class="skill-category-icon"><i class="bi bi-bar-chart-fill"></i></div>
+                        <h3 class="skill-category-title">BI & Dashboards</h3>
+                        <p class="skill-category-desc">Criação de visualizações de dados interativas que traduzem números em insights para tomada de decisão.</p>
+                        <ul class="skill-tags">
+                            <li>Streamlit</li>
+                            <li>Pandas</li>
+                            <li>Plotly</li>
+                            <li>Excel Automatizado</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Group 2 -->
+                    <div class="skill-category glass-card">
+                        <div class="skill-category-icon"><i class="bi bi-cpu-fill"></i></div>
+                        <h3 class="skill-category-title">Backend & Automação</h3>
+                        <p class="skill-category-desc">Desenvolvimento de rotinas de automação robustas, integração com APIs e manipulação de arquivos.</p>
+                        <ul class="skill-tags">
+                            <li>Python</li>
+                            <li>FastAPI</li>
+                            <li>Office365 API</li>
+                            <li>python-docx</li>
+                            <li>Pillow / Imagens</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Group 3 -->
+                    <div class="skill-category glass-card">
+                        <div class="skill-category-icon"><i class="bi bi-database-fill"></i></div>
+                        <h3 class="skill-category-title">Bancos de Dados</h3>
+                        <p class="skill-category-desc">Estruturação e manipulação de dados garantindo a integridade e alta performance das consultas.</p>
+                        <ul class="skill-tags">
+                            <li>SQL</li>
+                            <li>PostgreSQL</li>
+                            <li>SQLite</li>
+                            <li>Modelagem ER</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETOS SECTION -->
+        <section id="projetos" class="section projetos-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-num">04 / PROJETOS</span>
+                    <h2 class="section-title">Soluções Desenvolvidas.</h2>
+                </div>
+                <div class="projects-list">
+
+                    <!-- Projeto 1: Voyzer Dashboard -->
+                    <div class="project-item">
+                        <div class="project-info reveal-left">
+                            <span class="project-tag">Business Intelligence (BI) & Web Portal</span>
+                            <h3 class="project-name">Voyzer Dashboard</h3>
+                            <p class="project-description">
+                                Plataforma corporativa multi-páginas de Business Intelligence construída com Streamlit. Centraliza dados operacionais e financeiros, permitindo análises aprofundadas das áreas de Controladoria e TI.
+                            </p>
+                            <div class="project-features">
+                                <div class="feature-tag"><i class="bi bi-shield-lock"></i> Autenticação com níveis de acesso (DRE, TI Global, Admin)</div>
+                                <div class="feature-tag"><i class="bi bi-link-45deg"></i> Roteamento avançado mantido diretamente na URL do navegador</div>
+                                <div class="feature-tag"><i class="bi bi-graph-up-arrow"></i> Integração e análise de dados provenientes da API do TIflux</div>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-hospedagem-notice"><i class="bi bi-cloud-check"></i> Em breve disponível na Streamlit Cloud</span>
+                            </div>
+                        </div>
+                        <div class="project-visual reveal-right">
+                            <div class="dashboard-mockup glass-card">
+                                <div class="mockup-header">
+                                    <span class="mockup-dot red"></span>
+                                    <span class="mockup-dot yellow"></span>
+                                    <span class="mockup-dot green"></span>
+                                    <span class="mockup-title">Voyzer Dashboard - Admin</span>
+                                </div>
+                                <div class="mockup-body">
+                                    <div class="mockup-sidebar">
+                                        <div class="mockup-logo-container"><i class="bi bi-activity"></i> Voyzer</div>
+                                        <div class="mockup-menu-item active"><i class="bi bi-house"></i> Home</div>
+                                        <div class="mockup-menu-item"><i class="bi bi-graph-up"></i> Controladoria</div>
+                                        <div class="mockup-menu-item"><i class="bi bi-pc-display"></i> TI Global</div>
+                                        <div class="mockup-menu-item"><i class="bi bi-gear"></i> Administração</div>
+                                    </div>
+                                    <div class="mockup-content">
+                                        <div class="mockup-row">
+                                            <div class="mockup-card">
+                                                <span class="mockup-card-label">Tickets Totais</span>
+                                                <span class="mockup-card-val">1.240</span>
+                                            </div>
+                                            <div class="mockup-card">
+                                                <span class="mockup-card-label">SLA Atendido</span>
+                                                <span class="mockup-card-val text-green">94.2%</span>
+                                            </div>
+                                        </div>
+                                        <div class="mockup-chart">
+                                            <div class="chart-bar" style="height: 40%"></div>
+                                            <div class="chart-bar" style="height: 60%"></div>
+                                            <div class="chart-bar" style="height: 85%"></div>
+                                            <div class="chart-bar" style="height: 50%"></div>
+                                            <div class="chart-bar" style="height: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="project-divider">
+
+                    <!-- Projeto 2: TermoTecnico -->
+                    <div class="project-item inverse">
+                        <div class="project-info reveal-right">
+                            <span class="project-tag">Automação de Processos & Integração</span>
+                            <h3 class="project-name">Gerador TermoTecnico</h3>
+                            <p class="project-description">
+                                Script inteligente de automação que unifica e substitui a geração manual de relatórios de entrega de obras. O sistema interage com o SharePoint para baixar e processar fotos e compilar relatórios detalhados em formato Word de maneira 100% automatizada.
+                            </p>
+                            <div class="project-features">
+                                <div class="feature-tag"><i class="bi bi-cloud-arrow-down"></i> Download recursivo de imagens baseado em prefixo do SharePoint</div>
+                                <div class="feature-tag"><i class="bi bi-images"></i> Conversão automática em lote de imagens HEIC (iPhone) para PNG</div>
+                                <div class="feature-tag"><i class="bi bi-file-earmark-word"></i> Geração de arquivos .docx injetando dinamicamente tarefas e fotos</div>
+                            </div>
+                        </div>
+                        <div class="project-visual reveal-left">
+                            <div class="flow-container">
+                                <h4 class="flow-title"><i class="bi bi-gear-fill"></i> Fluxo da Automação</h4>
+                                <div class="flow-steps reveal-stagger">
+                                    <div class="flow-step glass-card hover-target">
+                                        <div class="step-num">01</div>
+                                        <div class="step-info">
+                                            <h5>SharePoint Fetch</h5>
+                                            <p>Conecta-se ao site da controladoria e faz o download de fotos identificadas com prefixo específico da obra.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flow-step glass-card hover-target">
+                                        <div class="step-num">02</div>
+                                        <div class="step-info">
+                                            <h5>Conversão HEIC</h5>
+                                            <p>Detecta formatos de imagem de dispositivos iOS e converte automaticamente para PNG usando Python (Pillow + Pillow-Heif).</p>
+                                        </div>
+                                    </div>
+                                    <div class="flow-step glass-card hover-target">
+                                        <div class="step-num">03</div>
+                                        <div class="step-info">
+                                            <h5>Compilação Word</h5>
+                                            <p>Lê dados de tarefas de arquivos CSV, abre o template `.docx`, insere as fotos nos locais corretos e formata as observações.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO SECTION -->
+        <section id="contato" class="section contato-section">
+            <div class="container">
+                <div class="contato-wrapper glass-card hover-target reveal">
+                    <h2 class="contato-title">Vamos otimizar seus processos?</h2>
+                    <p class="contato-subtitle">
+                        Se você precisa estruturar dashboards interativos, automatizar relatórios manuais ou integrar dados de sistemas corporativos, sinta-se à vontade para entrar em contato.
+                    </p>
+                    <div class="contato-links">
+                        <a href="mailto:yurick_carrard@grupovoyzer.com.br" class="contato-btn hover-target">
+                            <i class="bi bi-envelope"></i> Enviar E-mail
+                        </a>
+                        <a href="https://www.linkedin.com/in/yurick-carrard-da-silva/" target="_blank" class="contato-btn hover-target">
+                            <i class="bi bi-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/YurickcSilva" target="_blank" class="contato-btn hover-target">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript Link -->
+    <script src="script.js"></script>
+</body>
+</html>
